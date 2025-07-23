@@ -1,46 +1,39 @@
-version: "3.9"
-
 services:
+  backend:
+    build: ./Cria-o_API
+    container_name: sispar_backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./Cria-o_API:/app
+    environment:
+      - FLASK_ENV=development
+    env_file:
+      - ./Cria-o_API/.env  # garante que o backend leia sua variável do banco
+    depends_on:
+      - sispar-db
+
+  frontend:
+    build: ./Projeto-Sispar
+    container_name: sispar_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
   sispar-db:
     image: mysql:8.0
     container_name: sispar-db
+    ports:
+      - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: sispar
       MYSQL_USER: user
       MYSQL_PASSWORD: userpass
-    ports:
-      - "3307:3306"
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
       - db_data:/var/lib/mysql
-    command: --default-authentication-plugin=mysql_native_password
-
-  backend:
-    build: ./sispar-backend
-    container_name: sispar_backend
-    depends_on:
-      - sispar-db
-    environment:
-      - FLASK_ENV=development
-    env_file:
-      - ./sispar-backend/.env
-    ports:
-      - "5000:5000"
-    command: /bin/sh -c "sleep 15 && flask run --host=0.0.0.0 --reload"
-    volumes:
-      - ./sispar-backend:/app
-
-  frontend:
-    build: ./sispar-frontend
-    container_name: sispar_frontend
-    ports:
-      - "3000:5173"
-    depends_on:
-      - backend
-    command: npm run dev
-    volumes:
-      - ./sispar-frontend:/app
-      - /app/node_modules
 
 volumes:
   db_data:
