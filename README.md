@@ -26,11 +26,11 @@ A aplicação permite:
 
 ### 1. Clone os repositórios do frontend e backend:
 ```bash
-git clone https://github.com/Gabrielsvdata/Projeto-Sispar sispar-frontend
-git clone https://github.com/Gabrielsvdata/Projeto-Sispar-Back sispar-backend
+git clone https://github.com/Gabrielsvdata/Sispar-Frontend sispar-frontend
+git clone https://github.com/Gabrielsvdata/Sispar-Backend sispar-backend
 ```
 
-> Obs: os nomes das pastas devem ser `sispar-frontend` e `sispar-backend`, como o `docker-compose.yml` espera.
+> Obs: os nomes das pastas devem ser `Sispar-Frontend` e `Sispar-Backend`, como o `docker-compose.yml` espera.
 
 ---
 
@@ -42,15 +42,15 @@ Organize os arquivos assim dentro da pasta principal (`SISPAR-DOCKER/`):
 SISPAR-DOCKER/
 ├── docker-compose.yml
 ├── README.md
-├── sispar-frontend/
-└── sispar-backend/
+├── Sispar-Frontend/
+└── Sispar-Backend/
 ```
 
 ---
 
 ### 3. Configure suas variáveis de ambiente
 
-Crie um arquivo `.env` dentro da pasta `sispar-backend/` com o seguinte conteúdo:
+Crie um arquivo `.env` dentro da pasta `Sispar-Backend/` com o seguinte conteúdo:
 
 ```env
 DB_HOST=sispar-db

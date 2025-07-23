@@ -1,20 +1,20 @@
 services:
   backend:
-    build: ./Cria-o_API
+    build: ./Sispar-Backend
     container_name: sispar_backend
     ports:
       - "5000:5000"
     volumes:
-      - ./Cria-o_API:/app
+      - ./Sispar-Backend:/app
     environment:
       - FLASK_ENV=development
     env_file:
-      - ./Cria-o_API/.env  # garante que o backend leia sua variável do banco
+      - ./Sispar-Backend/.env  # garante que o backend leia sua variável do banco
     depends_on:
       - sispar-db
 
   frontend:
-    build: ./Projeto-Sispar
+    build: ./Sispar-Frontend
     container_name: sispar_frontend
     ports:
       - "3000:80"
