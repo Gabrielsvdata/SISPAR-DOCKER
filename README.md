@@ -1,6 +1,14 @@
 # 💼 SISPAR - Sistema de Reembolso
 
-SISPAR é um sistema Full Stack para gerenciamento de solicitações de reembolso. A aplicação permite cadastro e login de colaboradores, envio de pedidos de reembolso com comprovantes, acompanhamento e aprovação/rejeição por parte dos responsáveis.
+SISPAR é um sistema Full Stack para gerenciamento de solicitações de reembolso.  
+A aplicação permite:
+
+- Cadastro e login de colaboradores
+- Envio de pedidos de reembolso com comprovantes
+- Acompanhamento e aprovação/rejeição por parte dos responsáveis
+- Análise por meio de gráficos e tabelas
+
+---
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -16,64 +24,73 @@ SISPAR é um sistema Full Stack para gerenciamento de solicitações de reembols
 
 ## 🛠️ Como Rodar o Projeto com Docker
 
-1. **Clone o repositório**
+### 1. Clone os repositórios do frontend e backend:
 ```bash
-
+git clone https://github.com/Gabrielsvdata/Projeto-Sispar sispar-frontend
+git clone https://github.com/Gabrielsvdata/Projeto-Sispar-Back sispar-backend
 ```
 
-2. **Configure suas variáveis de ambiente**
+> Obs: os nomes das pastas devem ser `sispar-frontend` e `sispar-backend`, como o `docker-compose.yml` espera.
 
-Antes de subir os containers, certifique-se de que o arquivo `.env` esteja presente na **raiz do projeto** com as credenciais corretas para conexão com o banco de dados.
+---
 
-> ⚠️ Por motivos de segurança, o conteúdo do `.env` **não está incluído no repositório**. Consulte o desenvolvedor ou a equipe responsável para obtê-lo.
+### 2. Estrutura de pastas esperada
 
-3. **Suba os containers**
+Organize os arquivos assim dentro da pasta principal (`SISPAR-DOCKER/`):
+
+```
+SISPAR-DOCKER/
+├── docker-compose.yml
+├── README.md
+├── sispar-frontend/
+└── sispar-backend/
+```
+
+---
+
+### 3. Configure suas variáveis de ambiente
+
+Crie um arquivo `.env` dentro da pasta `sispar-backend/` com o seguinte conteúdo:
+
+```env
+DB_HOST=sispar-db
+DB_PORT=3306
+DB_NAME=sispar
+DB_USER=user
+DB_PASSWORD=userpass
+SECRET_KEY=sua_chave_secreta
+```
+
+---
+
+### 4. Suba os containers com Docker
+
 ```bash
 docker-compose up --build
 ```
 
-Aguarde a inicialização de todos os serviços. A aplicação estará disponível em:
+Após a inicialização, acesse:
 
-- 🌐 Frontend: http://localhost:3000  
-- ⚙️ Backend Swagger: http://localhost:5000/apidocs
-
----
-
-## 📦 Estrutura do Projeto
-
-```
-sispar-fullstack-docker/
-├── api-t3/               # Backend Flask
-│   ├── src/
-│   ├── Dockerfile
-│   └── requirements.txt
-├── Projeto-Sispar/       # Frontend React
-│   ├── src/
-│   ├── Dockerfile
-│   └── package.json
-├── docker-compose.yml    # Orquestrador
-└── READEME.md            # Informações
-```
+- 🌐 **Frontend**: http://localhost:3000  
+- ⚙️ **Documentação da API (Swagger)**: http://localhost:5000/apidocs
 
 ---
 
 ## ✅ Funcionalidades
 
-- Cadastro e login de colaboradores
-- Envio de solicitações de reembolso
-- Aprovação e rejeição de reembolsos
-- Análise com graficos e tabelas
-
-
-
-
+- 👤 Cadastro e login de colaboradores
+- 📎 Envio de solicitações de reembolso com comprovantes
+- ✅ Aprovação e rejeição de reembolsos
+- 📊 Visualização por gráficos e tabelas
+- 📄 Documentação da API com Swagger
 
 ---
 
 ## 👨‍💻 Autor
 
 Gabriel Silvano Vieira  
-[LinkedIn](https://www.linkedin.com/in/gabriel-silvano-vieira-2615a618b/) • [GitHub](https://github.com/Gabrielsvdata)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat)](https://www.linkedin.com/in/gabriel-silvano-vieira-2615a618b/)  
+[![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white&style=flat)](https://github.com/Gabrielsvdata)
 
 ---
 
